@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zixin Ma | Beijing Jiaotong University</title>
+  <meta name="description" content="Academic homepage of Zixin Ma, undergraduate student at Beijing Jiaotong University." />
+  <style>
+    :root {
+      --paper: #f4f2ed;
+      --paper-2: #ece9e2;
+      --ink: #111318;
+      --muted: #6f747d;
+      --line: rgba(17, 19, 24, 0.14);
+      --navy: #18324a;
+      --glass: rgba(255, 255, 255, 0.48);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 10%, rgba(255,255,255,.95), transparent 34rem),
+        radial-gradient(circle at 92% 16%, rgba(209, 216, 222, .42), transparent 30rem),
+        linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      line-height: 1.72;
+    }
+
+    /* Subtle paper texture, intentionally restrained */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .18;
+      background-image:
+        linear-gradient(rgba(17,19,24,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17,19,24,.025) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.3) 65%, transparent 100%);
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 34px 0 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0 22px;
+      border-bottom: 1px solid var(--line);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .topbar strong {
+      color: var(--ink);
+      font-weight: 600;
+      letter-spacing: .16em;
+    }
+
+    .hero {
+      min-height: 420px;
+      display: grid;
+      grid-template-columns: 1.55fr .85fr;
+      gap: 48px;
+      align-items: end;
+      padding: 72px 0 54px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: var(--navy);
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      font-size: clamp(64px, 9vw, 122px);
+      line-height: .88;
+      letter-spacing: -.055em;
+    }
+
+    .hero-title-line {
+      display: block;
+    }
+
+    .hero-title-line.secondary {
+      color: #60656d;
+    }
+
+    .hero-side {
+      padding-bottom: 6px;
+    }
+
+    .hero-side p {
+      margin: 0 0 24px;
+      font-size: 17px;
+      color: #3f444c;
+      max-width: 440px;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .links a {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 14px;
+      border: 1px solid rgba(17,19,24,.16);
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--ink);
+      background: rgba(255,255,255,.28);
+      backdrop-filter: blur(8px);
+      transition: .2s ease;
+      font-size: 14px;
+    }
+
+    .links a:hover {
+      transform: translateY(-1px);
+      border-color: rgba(17,19,24,.35);
+      background: rgba(255,255,255,.62);
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 72px;
+      padding-top: 56px;
+    }
+
+    .side-index {
+      position: sticky;
+      top: 30px;
+      align-self: start;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .side-index .label {
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: 11px;
+      margin-bottom: 18px;
+    }
+
+    .side-index a {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+      padding: 7px 0;
+    }
+
+    .side-index a:hover {
+      color: var(--ink);
+    }
+
+    .main-sections section {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 34px;
+      padding: 0 0 42px;
+      margin-bottom: 42px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: var(--muted);
+      padding-top: 5px;
+    }
+
+    .section-body h2 {
+      margin: 0 0 14px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      font-size: clamp(28px, 3.2vw, 42px);
+      letter-spacing: -.03em;
+      line-height: 1.12;
+    }
+
+    .section-body p {
+      margin: 0;
+      max-width: 760px;
+      color: #444951;
+      font-size: 16px;
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .research-item {
+      border: 1px solid rgba(17,19,24,.12);
+      padding: 18px 18px 17px;
+      background: var(--glass);
+      backdrop-filter: blur(8px);
+      min-height: 112px;
+    }
+
+    .research-item .num {
+      font-family: Georgia, "Times New Roman", serif;
+      color: #9da1a7;
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+
+    .research-item .name {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .education {
+      border-left: 2px solid var(--navy);
+      padding: 2px 0 2px 22px;
+      margin-top: 10px;
+    }
+
+    .education .school {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .education .meta {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .contact-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      padding: 22px 0;
+    }
+
+    .contact-box a {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(22px, 3vw, 34px);
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(17,19,24,.28);
+    }
+
+    .contact-box a:hover {
+      border-bottom-color: var(--ink);
+    }
+
+    footer {
+      margin-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .04em;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 34px;
+        padding-top: 54px;
+      }
+
+      .content {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .side-index {
+        position: static;
+        display: none;
+      }
+
+      .main-sections section {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .research-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-box {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .topbar {
+        align-items: flex-start;
+        gap: 12px;
+        flex-direction: column;
+      }
+
+      h1 {
+        font-size: clamp(58px, 19vw, 88px);
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .links a {
+        font-size: 13px;
+      }
+
+      footer {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <strong>Zixin Ma</strong>
+      <span>Academic Homepage · Beijing Jiaotong University</span>
+    </div>
+
+    <header class="hero">
+      <div>
+        <div class="eyebrow">Computer Science · Undergraduate Research</div>
+        <h1>
+          <span class="hero-title-line">Zixin</span>
+          <span class="hero-title-line secondary">Ma</span>
+        </h1>
+      </div>
+
+      <div class="hero-side">
+        <p>
+          Undergraduate student at the School of Computer Science &amp; Technology,
+          Beijing Jiaotong University. Interested in deep learning, computer vision,
+          and multimodal intelligence.
+        </p>
+
+        <div class="links">
+          <a href="mailto:24281268@bjtu.edu.cn">Email</a>
+          <a href="https://github.com/Zixin-Ma" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <aside class="side-index">
+        <div class="label">Index</div>
+        <a href="#about">01 · About</a>
+        <a href="#research">02 · Research</a>
+        <a href="#education">03 · Education</a>
+        <a href="#contact">04 · Contact</a>
+      </aside>
+
+      <main class="main-sections">
+        <section id="about">
+          <div class="section-label">01 · About</div>
+          <div class="section-body">
+            <h2>About Me</h2>
+            <p>
+              I am an undergraduate student at the School of Computer Science &amp; Technology,
+              Beijing Jiaotong University. My current interests focus on learning and perception
+              systems that connect visual understanding with multimodal reasoning.
+            </p>
+          </div>
+        </section>
+
+        <section id="research">
+          <div class="section-label">02 · Research</div>
+          <div class="section-body">
+            <h2>Research Interests</h2>
+
+            <div class="research-grid">
+              <div class="research-item">
+                <div class="num">01</div>
+                <div class="name">Deep Learning</div>
+              </div>
+
+              <div class="research-item">
+                <div class="num">02</div>
+                <div class="name">Computer Vision</div>
+              </div>
+
+              <div class="research-item">
+                <div class="num">03</div>
+                <div class="name">Multimodal Learning</div>
+              </div>
+
+              <div class="research-item">
+                <div class="num">04</div>
+                <div class="name">Vision-Language Models</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="education">
+          <div class="section-label">03 · Education</div>
+          <div class="section-body">
+            <h2>Education</h2>
+
+            <div class="education">
+              <div class="school">Beijing Jiaotong University</div>
+              <div>School of Computer Science &amp; Technology</div>
+              <div class="meta">Undergraduate Student · 2024–2028 (expected)</div>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact">
+          <div class="section-label">04 · Contact</div>
+          <div class="section-body">
+            <h2>Contact</h2>
+            <div class="contact-box">
+              <a href="mailto:24281268@bjtu.edu.cn">24281268@bjtu.edu.cn</a>
+              <span>Beijing, China</span>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      <span>© 2026 Zixin Ma</span>
+      <span>Last updated 2026</span>
+    </footer>
+  </div>
+</body>
+</html>
