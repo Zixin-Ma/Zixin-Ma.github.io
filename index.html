@@ -2,464 +2,212 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <meta name="description" content="Zixin Ma is an undergraduate student at Beijing Jiaotong University, interested in deep learning, computer vision, multimodal learning, and vision-language models." />
+  <meta name="author" content="Zixin Ma" />
+  <meta name="theme-color" content="#ffffff" />
   <title>Zixin Ma | Beijing Jiaotong University</title>
-  <meta name="description" content="Academic homepage of Zixin Ma, undergraduate student at Beijing Jiaotong University." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <style>
-    :root {
-      --paper: #f4f2ed;
-      --paper-2: #ece9e2;
-      --ink: #111318;
-      --muted: #6f747d;
-      --line: rgba(17, 19, 24, 0.14);
-      --navy: #18324a;
-      --glass: rgba(255, 255, 255, 0.48);
+    :root { --ink: #252525; --muted: #686868; --red: #930d17; --blue: #174d96; --line: #d7d7d7; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+    body { margin: 0; background: #fff; color: var(--ink); font-family: Georgia, "Times New Roman", serif; font-size: 17px; line-height: 1.7; -webkit-text-size-adjust: 100%; }
+    a { color: var(--blue); text-decoration: none; text-underline-offset: 4px; }
+    a:hover { text-decoration: underline; }
+    a:focus-visible { outline: 2px solid var(--blue); outline-offset: 5px; }
+    p { margin: 0 0 12px; }
+    p:last-child { margin-bottom: 0; }
+    .page { width: min(1100px, calc(100% - 80px)); margin: 0 auto; }
+    .skip-link { position: absolute; top: 8px; left: 16px; padding: 8px 14px; background: #fff; transform: translateY(-160%); z-index: 2; }
+    .skip-link:focus { transform: translateY(0); }
+    .masthead { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding: 42px 0 15px; border-bottom: 1px solid var(--line); }
+    h1 { margin: 0; color: var(--red); font-size: 33px; line-height: 1.3; font-weight: 700; }
+    h1 span { font-weight: 400; }
+    .navigation { display: flex; flex-wrap: wrap; column-gap: 22px; row-gap: 6px; font-size: 14px; }
+    .navigation a { color: var(--muted); }
+    .navigation a:hover { color: var(--red); }
+    .profile { display: grid; grid-template-columns: 208px minmax(0, 1fr) 186px; align-items: center; gap: 42px; padding: 40px 0 38px; }
+    .portrait { position: relative; width: 208px; height: 260px; overflow: hidden; background: #fafafa; }
+    /* Frame the portrait above the original image's printed caption. */
+    .portrait img { display: block; position: absolute; width: 125%; max-width: none; height: auto; left: -12.5%; top: 0; }
+    .profile-name { margin: 0 0 8px; font-size: 38px; font-weight: 400; line-height: 1.2; }
+    .role { margin-bottom: 12px; font-size: 19px; }
+    .affiliation { line-height: 1.6; margin-bottom: 19px; }
+    .affiliation a { display: block; }
+    .profile-email { margin-bottom: 8px; font-size: 16px; overflow-wrap: anywhere; }
+    .profile-email span { margin-right: 6px; }
+    .profile-links { display: flex; align-items: center; gap: 12px; font-size: 15px; }
+    .profile-links .separator { color: #b5b5b5; }
+    .profile-links .location { color: var(--muted); }
+    .university { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+    .university img { display: block; height: auto; filter: brightness(0) saturate(100%) invert(13%) sepia(77%) saturate(3411%) hue-rotate(337deg) brightness(86%) contrast(104%); }
+    .university .emblem { width: 138px; }
+    .university .wordmark { width: 186px; }
+    .university a { display: block; }
+    main { padding-bottom: 7px; }
+    .section { margin: 0 0 31px; scroll-margin-top: 18px; }
+    .section-title { margin: 0 0 13px; padding-bottom: 6px; border-bottom: 1px solid var(--line); color: var(--red); font-size: 26px; line-height: 1.35; font-weight: 700; }
+    .interests { display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; row-gap: 3px; margin: 12px 0 0; padding-left: 22px; }
+    .interests li { padding-left: 3px; }
+    .interests li::marker { color: var(--red); font-size: 0.8em; }
+    .education-entry { display: grid; grid-template-columns: 185px minmax(0, 1fr); gap: 20px; padding-top: 2px; }
+    .education-years { font-weight: 700; }
+    .education-years small { display: block; color: var(--muted); font-size: 14px; font-weight: 400; }
+    .school { font-weight: 700; font-size: 18px; }
+    .education-detail { color: var(--muted); font-size: 16px; }
+    .contact { font-style: normal; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .contact p { margin: 0; }
+    .contact-links { padding-left: 10px; }
+    .contact-links a { overflow-wrap: anywhere; }
+    .contact-label { display: inline-block; min-width: 67px; }
+    footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; border-top: 1px solid var(--line); padding: 18px 0 30px; color: var(--muted); font-size: 13px; }
+    @media (max-width: 960px) {
+      .page { width: calc(100% - 56px); }
+      .masthead { align-items: flex-start; flex-direction: column; gap: 10px; padding-top: 30px; }
+      .profile { grid-template-columns: 176px minmax(0, 1fr) 138px; gap: 25px; }
+      .portrait { width: 176px; height: 220px; }
+      .profile-name { font-size: 34px; }
+      .university .emblem { width: 112px; }
+      .university .wordmark { width: 138px; }
+      .affiliation { font-size: 16px; }
     }
-
-    * {
-      box-sizing: border-box;
+    @media (max-width: 720px) {
+      .profile { grid-template-columns: 160px minmax(0, 1fr); gap: 25px; padding: 30px 0; }
+      .portrait { width: 160px; height: 200px; }
+      .portrait { grid-column: 1; grid-row: 1; }
+      .university { grid-column: 2; grid-row: 1; gap: 15px; }
+      .profile-info { grid-column: 1 / -1; grid-row: 2; }
+      .profile-name { font-size: 32px; }
+      .role { font-size: 17px; margin-bottom: 8px; }
+      .affiliation { margin-bottom: 12px; }
+      .contact { grid-template-columns: 1fr; gap: 12px; }
+      .contact-links { padding-left: 0; }
+      .education-entry { grid-template-columns: 150px minmax(0, 1fr); }
     }
-
-    html {
-      scroll-behavior: smooth;
+    @media (max-width: 480px) {
+      body { font-size: 16px; line-height: 1.7; }
+      .page { width: calc(100% - 40px); }
+      .masthead { padding-top: 25px; padding-bottom: 14px; }
+      h1 { font-size: 28px; }
+      .navigation { column-gap: 20px; font-size: 13px; }
+      .profile { grid-template-columns: 140px minmax(0, 1fr); gap: 23px; padding: 28px 0 30px; }
+      .portrait { width: 140px; height: 175px; }
+      .university .emblem { width: 94px; }
+      .university .wordmark { width: 112px; max-width: 100%; }
+      .profile-name { font-size: 34px; }
+      .profile-email { font-size: 16px; }
+      .affiliation { font-size: 16px; }
+      .section { margin-bottom: 27px; }
+      .section-title { font-size: 24px; }
+      .interests { grid-template-columns: 1fr; row-gap: 3px; }
+      .education-entry { grid-template-columns: 1fr; gap: 8px; }
+      .education-years small { display: inline; margin-left: 7px; }
+      footer { font-size: 12px; padding-bottom: 24px; }
     }
-
-    body {
-      margin: 0;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 12% 10%, rgba(255,255,255,.95), transparent 34rem),
-        radial-gradient(circle at 92% 16%, rgba(209, 216, 222, .42), transparent 30rem),
-        linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      line-height: 1.72;
-    }
-
-    /* Subtle paper texture, intentionally restrained */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: .18;
-      background-image:
-        linear-gradient(rgba(17,19,24,.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(17,19,24,.025) 1px, transparent 1px);
-      background-size: 80px 80px;
-      mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.3) 65%, transparent 100%);
-    }
-
-    .shell {
-      width: min(1180px, calc(100% - 48px));
-      margin: 0 auto;
-      padding: 34px 0 80px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 6px 0 22px;
-      border-bottom: 1px solid var(--line);
-      font-size: 12px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .topbar strong {
-      color: var(--ink);
-      font-weight: 600;
-      letter-spacing: .16em;
-    }
-
-    .hero {
-      min-height: 420px;
-      display: grid;
-      grid-template-columns: 1.55fr .85fr;
-      gap: 48px;
-      align-items: end;
-      padding: 72px 0 54px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .eyebrow {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: .18em;
-      color: var(--navy);
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-weight: 500;
-      font-size: clamp(64px, 9vw, 122px);
-      line-height: .88;
-      letter-spacing: -.055em;
-    }
-
-    .hero-title-line {
-      display: block;
-    }
-
-    .hero-title-line.secondary {
-      color: #60656d;
-    }
-
-    .hero-side {
-      padding-bottom: 6px;
-    }
-
-    .hero-side p {
-      margin: 0 0 24px;
-      font-size: 17px;
-      color: #3f444c;
-      max-width: 440px;
-    }
-
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .links a {
-      display: inline-flex;
-      align-items: center;
-      padding: 9px 14px;
-      border: 1px solid rgba(17,19,24,.16);
-      border-radius: 999px;
-      text-decoration: none;
-      color: var(--ink);
-      background: rgba(255,255,255,.28);
-      backdrop-filter: blur(8px);
-      transition: .2s ease;
-      font-size: 14px;
-    }
-
-    .links a:hover {
-      transform: translateY(-1px);
-      border-color: rgba(17,19,24,.35);
-      background: rgba(255,255,255,.62);
-    }
-
-    .content {
-      display: grid;
-      grid-template-columns: 240px 1fr;
-      gap: 72px;
-      padding-top: 56px;
-    }
-
-    .side-index {
-      position: sticky;
-      top: 30px;
-      align-self: start;
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .side-index .label {
-      color: var(--ink);
-      text-transform: uppercase;
-      letter-spacing: .14em;
-      font-size: 11px;
-      margin-bottom: 18px;
-    }
-
-    .side-index a {
-      display: block;
-      color: inherit;
-      text-decoration: none;
-      padding: 7px 0;
-    }
-
-    .side-index a:hover {
-      color: var(--ink);
-    }
-
-    .main-sections section {
-      display: grid;
-      grid-template-columns: 170px 1fr;
-      gap: 34px;
-      padding: 0 0 42px;
-      margin-bottom: 42px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .section-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .16em;
-      color: var(--muted);
-      padding-top: 5px;
-    }
-
-    .section-body h2 {
-      margin: 0 0 14px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-weight: 500;
-      font-size: clamp(28px, 3.2vw, 42px);
-      letter-spacing: -.03em;
-      line-height: 1.12;
-    }
-
-    .section-body p {
-      margin: 0;
-      max-width: 760px;
-      color: #444951;
-      font-size: 16px;
-    }
-
-    .research-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 22px;
-    }
-
-    .research-item {
-      border: 1px solid rgba(17,19,24,.12);
-      padding: 18px 18px 17px;
-      background: var(--glass);
-      backdrop-filter: blur(8px);
-      min-height: 112px;
-    }
-
-    .research-item .num {
-      font-family: Georgia, "Times New Roman", serif;
-      color: #9da1a7;
-      font-size: 13px;
-      margin-bottom: 25px;
-    }
-
-    .research-item .name {
-      font-size: 15px;
-      font-weight: 600;
-    }
-
-    .education {
-      border-left: 2px solid var(--navy);
-      padding: 2px 0 2px 22px;
-      margin-top: 10px;
-    }
-
-    .education .school {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 3px;
-    }
-
-    .education .meta {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .contact-box {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 22px;
-      padding: 22px 0;
-    }
-
-    .contact-box a {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(22px, 3vw, 34px);
-      color: var(--ink);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(17,19,24,.28);
-    }
-
-    .contact-box a:hover {
-      border-bottom-color: var(--ink);
-    }
-
-    footer {
-      margin-top: 16px;
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      color: var(--muted);
-      font-size: 12px;
-      letter-spacing: .04em;
-    }
-
-    @media (max-width: 860px) {
-      .shell {
-        width: min(100% - 28px, 1180px);
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-        gap: 34px;
-        padding-top: 54px;
-      }
-
-      .content {
-        grid-template-columns: 1fr;
-        gap: 36px;
-      }
-
-      .side-index {
-        position: static;
-        display: none;
-      }
-
-      .main-sections section {
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-
-      .research-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .contact-box {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .topbar {
-        align-items: flex-start;
-        gap: 12px;
-        flex-direction: column;
-      }
-
-      h1 {
-        font-size: clamp(58px, 19vw, 88px);
-      }
-
-      .hero {
-        min-height: auto;
-      }
-
-      .links a {
-        font-size: 13px;
-      }
-
-      footer {
-        flex-direction: column;
-      }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    @media print {
+      body { font-size: 11pt; }
+      .page { width: 100%; }
+      .masthead { padding-top: 0; }
+      .navigation, .skip-link { display: none; }
+      .profile { padding: 24px 0; }
+      .section { break-inside: avoid; margin-bottom: 22px; }
+      a { color: var(--ink); }
+      footer { padding-bottom: 0; }
     }
   </style>
 </head>
-
-<body>
-  <div class="shell">
-    <div class="topbar">
-      <strong>Zixin Ma</strong>
-      <span>Academic Homepage · Beijing Jiaotong University</span>
-    </div>
-
-    <header class="hero">
-      <div>
-        <div class="eyebrow">Computer Science · Undergraduate Research</div>
-        <h1>
-          <span class="hero-title-line">Zixin</span>
-          <span class="hero-title-line secondary">Ma</span>
-        </h1>
+<body id="top">
+  <a class="skip-link" href="#about">Skip to main content</a>
+  <div class="page">
+    <header class="masthead">
+      <h1>Zixin Ma <span>@ BJTU</span></h1>
+      <nav class="navigation" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#supervisor">Supervisor</a>
+        <a href="#research">Research</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+    <div class="profile" aria-label="Personal information">
+      <div class="portrait">
+        <img src="67861e551efc2b26920d0638628a7879.jpg" alt="Portrait of Zixin Ma" width="1122" height="1402" fetchpriority="high" />
       </div>
-
-      <div class="hero-side">
-        <p>
-          Undergraduate student at the School of Computer Science &amp; Technology,
-          Beijing Jiaotong University. Interested in deep learning, computer vision,
-          and multimodal intelligence.
+      <div class="profile-info">
+        <h2 class="profile-name">Zixin Ma</h2>
+        <p class="role">Undergraduate Student</p>
+        <p class="affiliation">
+          <a href="https://cs.bjtu.edu.cn/" target="_blank" rel="noopener noreferrer">School of Computer Science &amp; Technology</a>
+          <a href="https://www.bjtu.edu.cn/" target="_blank" rel="noopener noreferrer">Beijing Jiaotong University</a>
         </p>
-
-        <div class="links">
-          <a href="mailto:24281268@bjtu.edu.cn">Email</a>
-          <a href="https://github.com/Zixin-Ma" target="_blank" rel="noopener">GitHub</a>
+        <p class="profile-email"><span>Email:</span> <a href="mailto:24281268@bjtu.edu.cn">24281268@bjtu.edu.cn</a></p>
+        <div class="profile-links">
+          <a href="https://github.com/Zixin-Ma" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <span class="separator" aria-hidden="true">/</span>
+          <span class="location">Beijing, China</span>
         </div>
       </div>
-    </header>
-
-    <div class="content">
-      <aside class="side-index">
-        <div class="label">Index</div>
-        <a href="#about">01 · About</a>
-        <a href="#research">02 · Research</a>
-        <a href="#education">03 · Education</a>
-        <a href="#contact">04 · Contact</a>
-      </aside>
-
-      <main class="main-sections">
-        <section id="about">
-          <div class="section-label">01 · About</div>
-          <div class="section-body">
-            <h2>About Me</h2>
-            <p>
-              I am an undergraduate student at the School of Computer Science &amp; Technology,
-              Beijing Jiaotong University. My current interests focus on learning and perception
-              systems that connect visual understanding with multimodal reasoning.
-            </p>
-          </div>
-        </section>
-
-        <section id="research">
-          <div class="section-label">02 · Research</div>
-          <div class="section-body">
-            <h2>Research Interests</h2>
-
-            <div class="research-grid">
-              <div class="research-item">
-                <div class="num">01</div>
-                <div class="name">Deep Learning</div>
-              </div>
-
-              <div class="research-item">
-                <div class="num">02</div>
-                <div class="name">Computer Vision</div>
-              </div>
-
-              <div class="research-item">
-                <div class="num">03</div>
-                <div class="name">Multimodal Learning</div>
-              </div>
-
-              <div class="research-item">
-                <div class="num">04</div>
-                <div class="name">Vision-Language Models</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="education">
-          <div class="section-label">03 · Education</div>
-          <div class="section-body">
-            <h2>Education</h2>
-
-            <div class="education">
-              <div class="school">Beijing Jiaotong University</div>
-              <div>School of Computer Science &amp; Technology</div>
-              <div class="meta">Undergraduate Student · 2024–2028 (expected)</div>
-            </div>
-          </div>
-        </section>
-
-        <section id="contact">
-          <div class="section-label">04 · Contact</div>
-          <div class="section-body">
-            <h2>Contact</h2>
-            <div class="contact-box">
-              <a href="mailto:24281268@bjtu.edu.cn">24281268@bjtu.edu.cn</a>
-              <span>Beijing, China</span>
-            </div>
-          </div>
-        </section>
-      </main>
+      <div class="university">
+        <a href="https://www.bjtu.edu.cn/" target="_blank" rel="noopener noreferrer" aria-label="Beijing Jiaotong University official website">
+          <img class="emblem" src="assets/bjtu-emblem.png" alt="Beijing Jiaotong University emblem" width="2048" height="2047" />
+        </a>
+        <!-- Official wordmark: https://www.bjtu.edu.cn/xxgk/xxbz/index.htm -->
+        <a href="https://www.bjtu.edu.cn/" target="_blank" rel="noopener noreferrer" aria-label="Beijing Jiaotong University official website">
+          <img class="wordmark" src="assets/bjtu-wordmark.png" alt="北京交通大学 · Beijing Jiaotong University" />
+        </a>
+      </div>
     </div>
-
+    <main>
+      <section class="section" id="about" aria-labelledby="about-heading">
+        <h2 class="section-title" id="about-heading">About Me</h2>
+        <p>I am an undergraduate student at the <a href="https://cs.bjtu.edu.cn/" target="_blank" rel="noopener noreferrer">School of Computer Science &amp; Technology</a>, <a href="https://www.bjtu.edu.cn/" target="_blank" rel="noopener noreferrer">Beijing Jiaotong University</a>. My current interests focus on learning and perception systems that connect visual understanding with multimodal reasoning.</p>
+      </section>
+      <section class="section" id="supervisor" aria-labelledby="supervisor-heading">
+        <h2 class="section-title" id="supervisor-heading">Supervisor</h2>
+        <p>Prof. <a href="https://weiyc.github.io/index.html" target="_blank" rel="noopener noreferrer">Yunchao Wei <span lang="zh-CN">（魏云超）</span></a>, Beijing Jiaotong University.</p>
+      </section>
+      <section class="section" id="research" aria-labelledby="research-heading">
+        <h2 class="section-title" id="research-heading">Research Interests</h2>
+        <p>I am interested in deep learning, computer vision, and multimodal intelligence, with a particular focus on:</p>
+        <ul class="interests">
+          <li>Deep Learning</li>
+          <li>Computer Vision</li>
+          <li>Multimodal Learning</li>
+          <li>Vision-Language Models</li>
+        </ul>
+      </section>
+      <section class="section" id="education" aria-labelledby="education-heading">
+        <h2 class="section-title" id="education-heading">Education</h2>
+        <div class="education-entry">
+          <div class="education-years">2024 – 2028 <small>(expected)</small></div>
+          <div>
+            <div class="school"><a href="https://www.bjtu.edu.cn/" target="_blank" rel="noopener noreferrer">Beijing Jiaotong University</a></div>
+            <div>School of Computer Science &amp; Technology</div>
+            <div class="education-detail">Undergraduate Student</div>
+          </div>
+        </div>
+      </section>
+      <section class="section" id="contact" aria-labelledby="contact-heading">
+        <h2 class="section-title" id="contact-heading">Contact</h2>
+        <address class="contact">
+          <div>
+            <p>School of Computer Science &amp; Technology</p>
+            <p>Beijing Jiaotong University</p>
+            <p>Beijing, China</p>
+          </div>
+          <div class="contact-links">
+            <p><span class="contact-label">Email:</span> <a href="mailto:24281268@bjtu.edu.cn">24281268@bjtu.edu.cn</a></p>
+            <p><span class="contact-label">GitHub:</span> <a href="https://github.com/Zixin-Ma" target="_blank" rel="noopener noreferrer">github.com/Zixin-Ma</a></p>
+          </div>
+        </address>
+      </section>
+    </main>
     <footer>
-      <span>© 2026 Zixin Ma</span>
-      <span>Last updated 2026</span>
+      <span>&copy; 2026 Zixin Ma</span>
+      <span>Last updated: September 2026</span>
     </footer>
   </div>
 </body>
