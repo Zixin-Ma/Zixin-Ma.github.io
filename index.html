@@ -37,7 +37,8 @@
     .affiliation { line-height: 1.6; margin-bottom: 19px; }
     .affiliation a { display: block; }
     .profile-email { margin-bottom: 8px; font-size: 16px; overflow-wrap: anywhere; }
-    .profile-email span { margin-right: 6px; }
+    .email-entry { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: 10px; }
+    .email-addresses a { display: block; }
     .profile-links { display: flex; align-items: center; gap: 12px; font-size: 15px; }
     .profile-links .separator { color: #b5b5b5; }
     .profile-links .location { color: var(--muted); }
@@ -143,8 +144,13 @@
           <a href="https://cs.bjtu.edu.cn/" target="_blank" rel="noopener noreferrer">School of Computer Science &amp; Technology</a>
           <a href="https://www.bjtu.edu.cn/" target="_blank" rel="noopener noreferrer">Beijing Jiaotong University</a>
         </p>
-        <p class="profile-email"><span>Email:</span> <a href="mailto:zixin.ma@bjtu.edu.cn">zixin.ma@bjtu.edu.cn</a></p>
-        <p class="profile-email"><span>Gmail:</span> <a href="mailto:zixin.ma2006@gmail.com">zixin.ma2006@gmail.com</a></p>
+        <p class="profile-email email-entry">
+          <span>Email:</span>
+          <span class="email-addresses">
+            <a href="mailto:zixin.ma@bjtu.edu.cn">zixin.ma@bjtu.edu.cn</a>
+            <a href="mailto:zixin.ma2006@gmail.com">zixin.ma2006@gmail.com</a>
+          </span>
+        </p>
         <div class="profile-links">
           <a href="https://github.com/Zixin-Ma" target="_blank" rel="noopener noreferrer">GitHub</a>
           <span class="separator" aria-hidden="true">/</span>
@@ -200,8 +206,13 @@
             <p>Beijing, China</p>
           </div>
           <div class="contact-links">
-            <p><span class="contact-label">Email:</span> <a href="mailto:zixin.ma@bjtu.edu.cn">zixin.ma@bjtu.edu.cn</a></p>
-            <p><span class="contact-label">Gmail:</span> <a href="mailto:zixin.ma2006@gmail.com">zixin.ma2006@gmail.com</a></p>
+            <p class="email-entry">
+              <span class="contact-label">Email:</span>
+              <span class="email-addresses">
+                <a href="mailto:zixin.ma@bjtu.edu.cn">zixin.ma@bjtu.edu.cn</a>
+                <a href="mailto:zixin.ma2006@gmail.com">zixin.ma2006@gmail.com</a>
+              </span>
+            </p>
             <p><span class="contact-label">GitHub:</span> <a href="https://github.com/Zixin-Ma" target="_blank" rel="noopener noreferrer">github.com/Zixin-Ma</a></p>
           </div>
         </address>
